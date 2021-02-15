@@ -1,3 +1,5 @@
+
+
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
@@ -5,6 +7,7 @@ public class Header {
     int[] Dimensions;
     double[] FieldStrength;
     String[] ResonantNucleus;
+
     LinkedList<LinkedHashMap> DimensionsList = new LinkedList<>();
     public Header(int[] dims) {
         this.Dimensions = dims;
@@ -15,7 +18,8 @@ public class Header {
     public void addDimension(int i){
         DimensionsList.add(new LinkedHashMap());
         DimensionsList.get(i).put("id",i);
-        DimensionsList.get(i).put("info", "no info");
+        DimensionsList.get(i).put("info", new String());
+        DimensionsList.get(i).put("parameters", new LinkedList<Parameter>());
     }
 
 
