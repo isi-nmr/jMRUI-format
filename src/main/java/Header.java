@@ -1,25 +1,22 @@
 
 
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 
 public class Header {
     int[] Dimensions;
-    double[] FieldStrength;
-    String[] ResonantNucleus;
-
-    LinkedList<LinkedHashMap> DimensionsList = new LinkedList<>();
+    LinkedHashMap<String, Parameter> InformationList = new LinkedHashMap();
+    LinkedHashMap<String, LinkedHashMap> DimensionsList = new LinkedHashMap();
     public Header(int[] dims) {
         this.Dimensions = dims;
         for (int i = 0; i < Dimensions.length; i++)  {
-            addDimension(i);
+//            addDimension(i);
         }
     }
     public void addDimension(int i){
-        DimensionsList.add(new LinkedHashMap());
+//        DimensionsList.add(new LinkedHashMap());
         DimensionsList.get(i).put("id",i);
         DimensionsList.get(i).put("info", new String());
-        DimensionsList.get(i).put("parameters", new LinkedList<Parameter>());
+        DimensionsList.get(i).put("parameters", new LinkedHashMap());
     }
 
 
@@ -34,28 +31,12 @@ public class Header {
     public void setDimensions(int[] dimensions) {
         Dimensions = dimensions;
     }
-
-    public double[] getFieldStrength() {
-        return FieldStrength;
-    }
-
-    public void setFieldStrength(double[] fieldStrength) {
-        FieldStrength = fieldStrength;
-    }
-
-    public String[] getResonantNucleus() {
-        return ResonantNucleus;
-    }
-
-    public void setResonantNucleus(String[] resonantNucleus) {
-        ResonantNucleus = resonantNucleus;
-    }
-
-    public void setDimensionsList(LinkedList<LinkedHashMap> dimensionsList) {
-        DimensionsList = dimensionsList;
-    }
-
-    public LinkedList<LinkedHashMap> getDimensionsList() {
-        return DimensionsList;
-    }
+//
+//    public void setDimensionsList(LinkedList<LinkedHashMap> dimensionsList) {
+//        DimensionsList = dimensionsList;
+//    }
+//
+//    public LinkedList<LinkedHashMap> getDimensionsList() {
+//        return DimensionsList;
+//    }
 }
