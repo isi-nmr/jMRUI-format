@@ -43,4 +43,12 @@ public class NDimensionalArray {
     public void setDims(int[] dims) {
         this.dims = dims;
     }
+
+    public double[] getData() {
+        return data;
+    }
+
+    public void setData(double[] data) {
+        this.data = data;
+    }
 }
