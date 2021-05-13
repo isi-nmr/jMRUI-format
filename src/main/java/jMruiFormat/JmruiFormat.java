@@ -1,3 +1,5 @@
+package jMruiFormat;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.LinkedTreeMap;
@@ -11,11 +13,14 @@ public class JmruiFormat {
     private NDimensionalArray ndArray;
     private int[] dimensions;
 
+    public JmruiFormat() {
+    }
+
     public JmruiFormat(int[] dims) {
         this.dimensions = dims;
         header = new LinkedTreeMap();
         header.put("Dimensions", dims);
-        int[] ndArrayDims = dims;
+        int[] ndArrayDims = dims.clone();
         ndArrayDims[0] = 2 * ndArrayDims[0];
         ndArray = new NDimensionalArray(ndArrayDims);
     }
@@ -29,19 +34,25 @@ public class JmruiFormat {
         }
         os.close();
         ((DataOutputStream) dout).close();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        FileWriter file = new FileWriter(path+".json");
+        gson.toJson(this.getHeader(), file);
+        file.flush();
     }
 
     public void read(String path) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        LinkedTreeMap header = gson.fromJson(new FileReader(path+".json"), LinkedTreeMap.class);
+        header = gson.fromJson(new FileReader(path+".json"), LinkedTreeMap.class);
         int[] dims = ((ArrayList) header.get("Dimensions")).stream().mapToInt(value -> ((Double) value).intValue()).toArray();
-        int storageSize = Arrays.stream(dims).reduce(1, (a, b) -> a * b);
+        int storageSize = Arrays.stream(dims).reduce(1, (a, b) -> a * b)*2;
         double[] data = new double[storageSize];
         InputStream is = new BufferedInputStream(new FileInputStream(path+".jmrui"));
         DataInput din = new DataInputStream(is);
 
-
-
+        this.dimensions = dims;
+        int[] ndArrayDims = dims;
+        ndArrayDims[0] = 2 * ndArrayDims[0];
+        ndArray = new NDimensionalArray(ndArrayDims);
         for (int i = 0; i < storageSize; i++) {
             data[i] = din.readDouble();
         }

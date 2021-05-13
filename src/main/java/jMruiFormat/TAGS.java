@@ -1,3 +1,5 @@
+package jMruiFormat;
+
 public enum TAGS {
 //    EchoTime,
 //    RepetitionTime,
@@ -22,6 +24,7 @@ public enum TAGS {
     Averaging_method ("Averaging method" ),
     Total_number_of_spectra ("Total number of spectra" ),
     MixingTime ("Mixing time" ),
+    SpectralWidth("Spectral Width"),
 //    If MRSI: 2D or 3D, FOV in all directions, matrix size, acceleration factors, sampling method
     Water_suppression_method ("Water suppression method"),
     Shimming_method ("Shimming method" ),
@@ -38,9 +41,9 @@ public enum TAGS {
     Sample_spectrum ("Sample spectrum" ),
     InversionTime ("Inversion time"),
     TxOffset ("TxOffset"),
-    ExcitationFlipAngle ("ExcitationFlipAngle");
+    ExcitationFlipAngle ("ExcitationFlipAngle"),
     // extra parameters
-
+    CarrierFrequency("CarrierFrequency");
     private final String name;
 
     TAGS(String s) {

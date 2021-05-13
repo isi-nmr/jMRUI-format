@@ -1,3 +1,5 @@
+package jMruiFormat;
+
 import java.util.Arrays;
 
 public class NDimensionalArray {

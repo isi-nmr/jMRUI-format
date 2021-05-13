@@ -1,4 +1,7 @@
+package jMruiFormat;
+
 public enum DIM_KEYS {
+    DIM_DIRECT,
     DIM_COIL,
     DIM_DYN,
     DIM_INDIRECT_0,

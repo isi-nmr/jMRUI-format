@@ -1,4 +1,4 @@
-
+package jMruiFormat;
 
 import java.util.LinkedHashMap;
 @Deprecated
