@@ -14,7 +14,7 @@ public enum TAGS {
     RF_coils ("RF coils" ),
     Nuclei ("Nuclei"),
     Additional_hardware ("Additional hardware" ),
-    Pulse_sequence ("23NA" ),
+    Pulse_sequence ("Pulse sequence" ),
     VOI ("Volume of interest (VOI) locations" ),
     Nominal_VOI_size ("Nominal VOI size [cm3, mm3]" ),
     EchoTime ("Echo Time"),
@@ -26,6 +26,11 @@ public enum TAGS {
     MixingTime ("Mixing time" ),
     SpectralWidth("Spectral Width"),
 //    If MRSI: 2D or 3D, FOV in all directions, matrix size, acceleration factors, sampling method
+    MRSI("MRSI:2D or 3D"),
+    FOV("FOV"),
+    Acceleration_factor("Acceleration factors"),
+    Matrix_size("Matrix size"),
+    Sampling_method("Sampling method"),
     Water_suppression_method ("Water suppression method"),
     Shimming_method ("Shimming method" ),
     Reference_peak  ("Reference peak" ),
@@ -41,9 +46,28 @@ public enum TAGS {
     Sample_spectrum ("Sample spectrum" ),
     InversionTime ("Inversion time"),
     TxOffset ("TxOffset"),
-    ExcitationFlipAngle ("ExcitationFlipAngle"),
+    ExcitationFlipAngle ("Excitation Flip Angle"),
     // extra parameters
-    CarrierFrequency("CarrierFrequency");
+    CarrierFrequency("Carrier aFrequency"),
+//    nifit tags
+    scl_slope("scl_slope"),
+    scl_inter("scl_inter"),
+    cal_max("cal_max"),
+    cal_min("cal_min"),
+    slice_duration("slice_duration"),
+    toffset("toffset"),
+    slice_start("slice_start"),
+    slice_end("slice_end"),
+    slice_code("slice_code"),
+    qform_code("qform_code"),
+    sform_code("sform_code"),
+    quatern_b("quatern_b"),
+    quatern_c("quatern_c"),
+    quatern_d("quatern_d"),
+    srow_x("srow_x"),
+    srow_y("srow_y"),
+    srow_z("srow_z"),
+    aux_file("aux_file");
     private final String name;
 
     TAGS(String s) {

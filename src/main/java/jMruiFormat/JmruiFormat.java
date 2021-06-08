@@ -26,6 +26,9 @@ public class JmruiFormat {
     }
 
     public void write(String path) throws IOException {
+        if(path.contains(".json")) {
+            path = path.replace(".json", "") ;
+        }
         OutputStream os = new BufferedOutputStream(new FileOutputStream(path+".jmrui"));
         DataOutput dout = new DataOutputStream(os);
         for (double d:ndArray.getData()
@@ -42,6 +45,9 @@ public class JmruiFormat {
 
     public void read(String path) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        if(path.contains(".json")) {
+           path = path.replace(".json", "") ;
+        }
         header = gson.fromJson(new FileReader(path+".json"), LinkedTreeMap.class);
         int[] dims = ((ArrayList) header.get("Dimensions")).stream().mapToInt(value -> ((Double) value).intValue()).toArray();
         int storageSize = Arrays.stream(dims).reduce(1, (a, b) -> a * b)*2;
